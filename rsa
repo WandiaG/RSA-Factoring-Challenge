@@ -1,0 +1,16 @@
+#!/usr/bin/python3
+from math import sqrt
+from sys import argv
+
+
+def rsa():
+    with open(argv[1], "r") as f:
+        for line in f:
+            n = int(line)
+            print(f"{n}=", end="")
+            for i in range(2, int(sqrt(n)) + 1):
+                if n % i == 0:
+                    print(f"{n//i}*{i}")
+                    break
+            if n % i != 0:
+                print(f"{n}*1")

@@ -1,5 +1,19 @@
 #!/usr/bin/python3
-from factors_functions import *
-if __name__ == '__main__':
+from sys import argv
+from math import sqrt
 
-    print(unix_time(print_factors))
+def factorize():
+    with open(argv[1], "r") as file:
+        for line in file:
+            number = int(line)
+            print(f"{number}=", end="")
+            if number % 2 == 0:
+                print(f"{number//2}*2")
+                continue
+            for i in range(3, int(sqrt(number)) + 1, 2):
+                if number % i == 0:
+                    print(f"{number//i}*{i}")
+                    break
+            if number % i != 0:
+                print(f"{number}={number}*1")
+
